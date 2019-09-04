@@ -6,16 +6,19 @@ class Home extends Component{
         url: ''
     }
 
-    getInnerHtml = () =>{
-        let data = axios.get("https://www.mako.co.il")
-        console.log(data)
+    getIframe = () =>{
+        let iframe = document.getElementsByTagName("iframe")
+        let data = iframe[0].contentWindow.document;
+        let result = data? data.document : "cannot get document";
+        console.log(result)
     }
 
     render(){
         return(
             <div>
                 hello
-                <button onClick={this.getInnerHtml}>click</button>
+                <button onClick={this.getIframe}>click</button>
+                <iframe width="500" height="500" src="https://www.bmo.com"></iframe>
             </div>
         )
     }
